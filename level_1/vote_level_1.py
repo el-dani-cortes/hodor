@@ -6,7 +6,7 @@ import requests
 
 # Requests url by get method
 url = 'http://158.69.76.135/level1.php'
-my_id = '70'
+my_id = '2304'
 r = requests.get(url)
 # Get the cookies to use then in the post resquest
 key = r.cookies['HoldTheDoor']
