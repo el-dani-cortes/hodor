@@ -15,10 +15,11 @@ r = requests.get(url)
 print("Uploading votes...")
 vote = 1
 while vote <= 1024:
-    r = requests.post(url, data=params)
-    if r.status_code is 200 and vote_success in r.text:
-        print("Upload vote #{}".format(vote), end='\r', flush=True)
-        vote += 1
-    else:
-        print("Fail vote #{}".format(vote), end='\r', flush=True)
+    try:
+        r = requests.post(url, data=params)
+        if r.status_code is 200 and vote_success in r.text:
+            print("Upload vote #{}".format(vote), end='\r', flush=True)
+            vote += 1
+    except Exception as error:
+        print(error)
 print("cheat online voting process ends :)")
