@@ -13,7 +13,7 @@ session = requests.Session()
 
 # Info needed for the cheat voting process
 url = 'http://158.69.76.135/level3.php'
-my_id = '28'
+my_id = '2304'
 url_captcha = 'http://158.69.76.135/captcha.php'
 windows_user = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) \
 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36")
@@ -24,7 +24,7 @@ vote_success = 'Hold the Door challenge - Level 3'
 # Loop to make the 1024 votes
 print("Uploading votes...")
 vote = 1
-while vote <= 10:
+while vote <= 1024:
         # Request by get method all the header info of the web page
         r = session.get(url)
         key = r.cookies['HoldTheDoor']
