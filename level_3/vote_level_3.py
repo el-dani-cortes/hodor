@@ -40,13 +40,15 @@ while vote <= 1024:
         captcha = pytesseract.image_to_string(captcha_img).strip()
 
         # Request by post method to make the vote correctly
-        params = {'id': my_id, 'holdthedoor': 'Submit', "key": key,
-                  'captcha': captcha}
-        response = session.post(url, data=params, cookies=cookie,
-                                headers=headers)
-        if response.status_code is 200 and vote_success in response.text:
-                print("Upload vote #{}".format(vote))
-                vote += 1
-        else:
-                print("Fail vote #{}".format(vote))
+        try:
+                params = {'id': my_id, 'holdthedoor': 'Submit', "key": key,
+                          'captcha': captcha}
+                response = session.post(url, data=params, cookies=cookie,
+                                        headers=headers)
+                if (response.status_code is 200 and
+                        vote_success in response.text):
+                        print("Upload vote #{}".format(vote))
+                        vote += 1
+        except Exception as error:
+                print(error)
 print("cheat online voting process ends :)")
