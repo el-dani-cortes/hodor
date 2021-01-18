@@ -5,7 +5,7 @@ import requests
 
 # Requests url and all its headers info by get method
 url = 'http://158.69.76.135/level2.php'
-my_id = '04'
+my_id = '2304'
 r = requests.get(url)
 key = r.cookies['HoldTheDoor']
 params = {'id': my_id, 'holdthedoor': 'Submit', 'key': key}
