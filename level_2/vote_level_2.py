@@ -20,10 +20,12 @@ header = {"User-Agent": windows_user, "Referer": url}
 print("Uploading votes...")
 vote = 1
 while vote <= 1024:
-    response = requests.post(url, data=params, cookies=cookie, headers=header)
-    if response.status_code is 200 and vote_success in r.text:
-        vote += 1
-        print("Upload vote #{}".format(vote), end='\r', flush=True)
-    else:
-        print("Fail vote #{}".format(vote), end='\r', flush=True)
+    try:
+        response = requests.post(url, data=params, cookies=cookie,
+                                 headers=header)
+        if response.status_code is 200 and vote_success in r.text:
+            print("Upload vote #{}".format(vote), end='\r', flush=True)
+            vote += 1
+    except Exception as error:
+        print(error)
 print("cheat online voting process ends :)")
